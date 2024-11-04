@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<body class="body__form">
+<main class="content">
+    <section class="section">
+        <div class="registration">
+            <img src="{% static 'images/profile/useredit.jpg' %}" alt="" width="1251" height="1080" loading="lazy" class="register__image form__image">
+            <div class="register__inner form__inner">
+                <div class="register__body-wrapper form__body-wrapper">
+                    <div class="register__body form__body">
+                        <img src="{% static 'images/logo.svg' %}" width="60" height="60" loading="lazy" alt="" class="register__logo form__logo">
+                        <form class="register__form form" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <h2 class="register__title form__title">Изменить Профиль</h2>
+                            {% render_field form.username class+="register__input form__input" placeholder='Логин' autocomplete="new-password" %}
+                            {% render_field form.email class+="register__input form__input" placeholder='Почта' autocomplete="new-password" %}
+                            {% render_field form.first_name class+="register__input form__input" placeholder='Имя' autocomplete="new-password" %}
+                            {% render_field form.city class+="register__input form__input" placeholder='Город' autocomplete="new-password" %}
+                            <div class="file-upload">
+                                {{ form.avatar|add_class:'file-input'|attr:'id:file' }}
+                                <label for="file" class="file-label">Add Avatar</label>
+                            </div>
+                            {% for error in form.errors.values %}
+                                <span class="error">{{ error }}</span>
+                            {% endfor %}
+                            <button class="register__button form__button button" type="submit">Изменить</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+{% endblock %}

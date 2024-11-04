@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 
 from django.shortcuts import render, redirect
-from .forms import UserForm
+from .forms import UserForm, UserEditForm
 from django.contrib.auth import authenticate, login
 
 def register(request):
@@ -25,3 +25,14 @@ def register(request):
     else:
         form = UserForm()
     return render(request, 'registration/register.html', {'form': form})
+
+def user_edit(request):
+    if request.method == 'POST':
+        form = UserEditForm(request.POST, request.FILES, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Your account has been updated')
+    else:
+        form = UserEditForm(instance=request.user)
+
+    return render(request, 'account/user_edit.html', {"form": form})
