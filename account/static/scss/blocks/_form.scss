@@ -1,0 +1,148 @@
+.body__form {
+  overflow: hidden;
+}
+
+.form {
+  @include flex-column;
+
+  &__text {
+    padding-block: 20px;
+    font-size: 32px;
+    max-width: 353px;
+    text-align: center;
+
+    @include mobile {
+      font-size: 26px;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    z-index: -1;
+
+    @include desktop {
+      display: none;
+    }
+  }
+
+
+  &__body {
+    @include flex-column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-light-alt);
+    width: 34%;
+    height: 100vh;
+
+    @include fullscreen {
+      width: 40%;
+    }
+
+    @include desktop {
+      width: 100%;
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: end;
+    }
+  }
+
+  &__title {
+    padding-block: 40px;
+
+    @include mobile {
+      padding-block: 20px;
+      font-size: 26px;
+    }
+  }
+
+  &__input {
+    margin-bottom: 16px;
+    width: var(--input-width);
+    height: var(--input-height);
+    padding-left: 30px;
+    font-size: 24px;
+    color: var(--color-dark);
+    border: 0;
+    border-radius: var(--border-radius-large);
+
+    &:focus {
+      outline: none;
+    }
+
+    @include fullscreen {
+      width: 400px;
+    }
+
+    @include desktop {
+      width: 500px;
+    }
+
+    @include mobile {
+      width: 300px;
+      font-size: 18px;
+      height: 70px;
+    }
+
+
+  }
+
+  &__button {
+    margin-block: 16px 12px;
+    border: 0;
+
+    @include mobile {
+      margin-block: 8px 12px;
+      font-size: 20px;
+      padding:0;
+      width: 300px;
+      height: 50px;
+    }
+  }
+
+  &__social {
+    display: flex;
+    align-items: center;
+    column-gap: 50px;
+    font-size: 24px;
+    color: var(--color-dark);
+    border: var(--border);
+    border-radius: var(--border-radius-large);
+    padding: 27px 95px;
+
+    &-text {
+      opacity: .5;
+    }
+
+    &-img {
+      @include mobile {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @include hover {
+      opacity: .7;
+    }
+
+    @include fullscreen {
+      padding: 27px 60px;
+    }
+
+    @include desktop {
+      padding: 27px 90px;
+    }
+
+    @include mobile {
+      padding: 10px 30px;
+      column-gap: 10px;
+      font-size: 18px;
+    }
+
+  }
+
+}

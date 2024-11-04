@@ -1,0 +1,23 @@
+@import
+  'media',
+  'mixins',
+  'variables',
+  'normalize',
+  'utils',
+  'fonts',
+  'globals';
+
+@import
+  'blocks/button',
+  'blocks/price',
+  'blocks/form',
+  'blocks/welcome',
+  'blocks/header',
+  'blocks/home',
+  'blocks/product',
+  'blocks/login',
+  'blocks/register',
+  'blocks/profile',
+  'blocks/order',
+  'blocks/cart',
+  'blocks/file';

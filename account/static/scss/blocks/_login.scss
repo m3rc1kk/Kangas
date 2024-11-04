@@ -1,0 +1,19 @@
+.login {
+  &__forgotpass {
+    padding-block: 8px 60px;
+
+    @include mobile {
+      padding-block: 8px 20px;
+    }
+
+    @include hover {
+      opacity: .6;
+    }
+  }
+
+  &__noacc {
+    @include hover {
+      opacity: .6;
+    }
+  }
+}

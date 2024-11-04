@@ -1,0 +1,204 @@
+.product {
+  padding-top: 100px;
+
+  @include mobile {
+    padding-top: 50px;
+  }
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: 70px;
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      row-gap: 20px;
+      padding-bottom: 20px;
+    }
+  }
+
+  &__image {
+    @include desktop {
+      width: 500px;
+      height: auto;
+    }
+
+    @include tablet {
+      width: 400px;
+      height: auto;
+    }
+
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+
+    @include mobile {
+      align-items: center;
+    }
+  }
+
+  &__price {
+    display: block;
+    padding-block: 40px;
+    font-family: var(--font-family-title);
+    font-weight: 600;
+    font-size: 32px;
+
+    @include desktop {
+      font-size: 26px;
+      padding-block: 30px;
+    }
+
+    @include tablet {
+      font-size: 22px;
+      padding-block: 24px;
+    }
+
+  }
+
+  &__title {
+    font-family: var(--font-family-base);
+    font-weight: 700;
+    font-size: 36px;
+    max-width: 538px;
+
+    @include desktop {
+      font-size: 28px;
+    }
+
+    @include tablet {
+      font-size: 22px;
+      max-width: 300px;
+    }
+
+    @include mobile {
+      text-align: center;
+    }
+  }
+
+  &__sizes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 16px;
+    row-gap: 20px;
+    padding-bottom: 56px;
+
+    @include fullscreen {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include desktop {
+      column-gap: 8px;
+      row-gap: 16px;
+      padding-bottom: 40px;
+    }
+
+    @include tablet {
+      row-gap: 8px;
+      padding-bottom: 20px;
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+  }
+
+  &__size {
+    font-size: 28px;
+    font-weight: 600;
+    padding: 20px 100px;
+    background-color: var(--color-light);
+    text-align: center;
+    border-radius: var(--border-radius-large);
+    transition-duration: .2s;
+
+    @include hover {
+      background-color: var(--color-dark);
+      color: var(--color-light);
+    }
+
+    &--active {
+      color: var(--color-light);
+      background-color: var(--color-accent);
+
+      @include hover {
+        color: var(--color-light);
+        background-color: var(--color-accent);
+      }
+    }
+
+    @include desktop {
+      font-size: 20px;
+      padding: 20px 60px;
+    }
+
+    @include tablet {
+      font-size: 16px;
+      padding: 15px 40px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 36px;
+
+    @include tablet {
+      column-gap: 20px;
+    }
+  }
+
+  &__button {
+    &-cart {
+      font-size: 20px;
+      padding: 25px 50px;
+
+      @include desktop {
+        font-size: 18px;
+        padding: 20px 40px;
+      }
+
+      @include tablet {
+        font-size: 16px;
+        padding: 15px 30px;
+      }
+    }
+
+    &-favorites {
+      border: 1px solid var(--color-dark);
+      border-radius: 50%;
+      padding: 22px;
+
+      @include desktop {
+        padding: 16px;
+      }
+
+      @include tablet {
+        padding: 12px;
+      }
+
+      @include hover {
+        opacity: .6;
+      }
+
+      &-image {
+        @include desktop {
+          width: 28px;
+          height: 28px;
+        }
+
+        @include tablet {
+          width: 22px;
+          height: 22px;
+        }
+      }
+    }
+  }
+}

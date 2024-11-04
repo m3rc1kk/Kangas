@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<body class="body__form">
+    <main class="content">
+        <section class="section">
+            <div class="login">
+                <img src="{% static 'images/auth/login.png' %}" alt="" width="1251" height="1080" loading="lazy" class="login__image form__image">
+                <div class="login__inner form__inner">
+                    <div class="login__body-wrapper form__body-wrapper">
+                        <div class="login__body form__body">
+                            <img src="{% static 'images/logo.svg' %}" width="60" height="60" loading="lazy" alt="" class="login__logo form__logo">
+
+                            <form class="login__form form" method="post" autocomplete="off">
+                                <h2 class="login__title form__title">Вход</h2>
+                                {% csrf_token %}
+                                {% render_field form.username class+="login__input form__input" placeholder='Логин' autocomplete="new-password" %}
+                                {% render_field form.password class+="login__input form__input" placeholder='Пароль' autocomplete="new-password" %}
+                                <button class="login__button form__button button" type="submit">Вход</button>
+                            </form>
+                            <a href="{% url 'register' %}" class="login__noacc">Нет аккаунта?</a>
+                            <a href="{% url 'password_reset' %}" class="login__forgotpass">Забыли пароль?</a>
+                            <a href="{% url 'social:begin' 'google-oauth2' %}" class="login_social form__social"><img src="{% static 'images/auth/google.svg' %}" alt="" width="46" height="46" class="login__social-img form__social-img"><span class="form__social-text login__social-text"> Вход через Google</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}

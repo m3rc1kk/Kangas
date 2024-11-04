@@ -9,8 +9,9 @@ https://docs.djangoproject.com/en/5.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
-
+import os
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,19 +26,22 @@ SECRET_KEY = 'django-insecure-!4y+8h=3(vgx-bi+fu@ku7ahyxn!qcc1x-#v$_ykh1=zfwzp))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['kangas.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.apps.AccountConfig',
+    'widget_tweaks',
+    'social_django',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
@@ -76,8 +80,12 @@ WSGI_APPLICATION = 'Kangas.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'kangas',
+        'USER': 'kangasadm',
+        'PASSWORD': 'kangasadm',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -118,9 +126,22 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = 'media/'
+MEDIA_ROOT = BASE_DIR / 'media'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'account.User'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.google.GoogleOAuth2',
+]
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('AUTH_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('AUTH_SECRET')

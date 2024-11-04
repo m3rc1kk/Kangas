@@ -1,0 +1,20 @@
+.button {
+  font-size: 28px;
+  font-weight: 600;
+  padding-block: var(--button-padding-y);
+  padding-inline: var(--button-padding-x);
+  background-color: var(--color-accent);
+  color: var(--color-light);
+  border-radius: var(--border-radius-large);
+
+  &--link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include hover {
+    background-color: var(--color-dark);
+  }
+
+}

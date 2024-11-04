@@ -1,0 +1,41 @@
+.cart {
+  padding-top: 60px;
+
+  @include mobile {
+    padding-top: 30px;
+  }
+  &__header {
+    @include flex-column;
+    padding-bottom: 40px;
+
+    @include mobile {
+      padding-bottom: 20px;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    text-align: center;
+
+    @include mobile {
+      font-size: 24px;
+    }
+  }
+
+  &__totalprice {
+    padding-block: 32px 20px;
+    font-size: 40px;
+    font-family: var(--font-family-title);
+    font-weight: 600;
+    color: var(--color-accent);
+
+    @include mobile {
+      font-size: 32px;
+      padding-block: 16px 8px;
+    }
+  }
+
+  &__button {
+    font-size: 20px;
+  }
+}

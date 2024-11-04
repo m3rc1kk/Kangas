@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body class="body__form">
+<main class="content">
+    <section class="section">
+        <div class="logout">
+            <img src="{% static 'images/auth/logout.png' %}" alt="" width="1241" height="1080" loading="lazy" class="logout__image form__image">
+            <div class="logout__inner form__inner">
+                <div class="logout__body-wrapper form__body-wrapper">
+                    <div class="logout__body form__body">
+                        <img src="{% static 'images/logo.svg' %}" width="60" height="60" loading="lazy" alt="" class="logout__logo form__logo">
+                        <p class="logout__text form__text">Вы успешно вышли <br>
+                            из аккаунта</p>
+                        <a href="{% url 'login' %}" class="logout__button form__button button button--link">Вход</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+{% endblock %}

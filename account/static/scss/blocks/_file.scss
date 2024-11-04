@@ -1,0 +1,33 @@
+.file {
+    &-upload {
+      position: relative;
+      display: inline-block;
+    }
+
+    &-input {
+      visibility: hidden;
+      position: absolute;
+      width: 0;
+      height: 0;
+    }
+
+    &-label {
+      display: inline-block;
+      font-weight: 800;
+      color: var(--color-dark);
+      font-weight: 400;
+      font-size: 28px;
+      padding-block: 4px;
+      transition-duration: var(--transition-duration);
+
+      @include hover {
+        opacity: .8;
+      }
+
+      @include tablet{
+        font-size: 20px;
+      }
+    }
+
+}
+

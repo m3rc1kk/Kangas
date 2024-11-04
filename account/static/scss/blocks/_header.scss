@@ -1,0 +1,164 @@
+.header {
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 20px;
+    }
+  }
+
+  &__logo {
+    padding-left: 0;
+    @include desktop {
+      width: 50px;
+      height: auto;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    column-gap: 90px;
+
+    @include desktop {
+      column-gap: 60px;
+    }
+
+    @include tablet {
+      column-gap: 30px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      justify-content: center;
+      row-gap: 20px;
+    }
+  }
+
+  &__search {
+    position: relative;
+    &-input {
+      width: 350px;
+      height: 60px;
+      background-color: transparent;
+      border: 1px solid var(--color-dark);
+      border-radius: var(--border-radius-large);
+      color: var(--color-dark);
+      padding-left: 64px;
+      padding-right: 20px;
+      font-family: var(--font-family-add);
+      font-weight: 400;
+      font-size: 20px;
+
+      @include desktop {
+        width: 250px;
+        height: 50px;
+        font-size: 18px;
+      }
+
+      @include tablet {
+        width: 200px;
+        padding-left: 54px;
+      }
+
+      @include mobile {
+        width: 330px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+
+      &::placeholder {
+        opacity: 1;
+      }
+    }
+
+    &-icon {
+      position: absolute;
+      left: 20px;
+      bottom: 50%;
+      transform: translateY(50%);
+
+      @include tablet {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    column-gap: 124px;
+
+    @include desktop {
+      column-gap: 90px;
+    }
+
+    @include tablet {
+      column-gap: 40px;
+    }
+  }
+
+  &__icons {
+    display: flex;
+    align-items: center;
+    column-gap: 32px;
+
+    @include desktop {
+      column-gap: 24px;
+    }
+
+  }
+
+  &__favorites-link, &__cart-link {
+    @include hover {
+      opacity: 0.6;
+    }
+  }
+
+  &__favorites, &__cart {
+    @include desktop {
+      width: 32px;
+      height: 32px;
+    }
+
+
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    column-gap: 12px;
+    background-color: var(--color-accent);
+    padding: 13px 16px;
+    border-radius: var(--border-radius-large);
+
+    &-name {
+      font-size: 20px;
+      padding-right: 20px;
+      font-family: var(--font-family-add);
+      font-weight: 400;
+      color: var(--color-light);
+
+      @include desktop {
+        font-size: 18px;
+        padding-right: 15px;
+      }
+    }
+
+    &-photo {
+      border-radius: 50%;
+      border: 2px solid var(--color-light);
+
+
+    }
+
+  }
+
+}

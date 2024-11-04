@@ -1,0 +1,18 @@
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x)*2);
+  padding-inline: var(--container-padding-x);
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
