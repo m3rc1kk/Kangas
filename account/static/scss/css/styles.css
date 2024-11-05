@@ -741,6 +741,16 @@ h4 {
   padding: 13px 16px;
   border-radius: var(--border-radius-large);
 }
+@media (hover: hover) {
+  .header__profile:hover {
+    opacity: 0.8;
+  }
+}
+@media (hover: none) {
+  .header__profile:active {
+    opacity: 0.8;
+  }
+}
 .header__profile-name {
   font-size: 20px;
   padding-right: 20px;
@@ -918,6 +928,9 @@ h4 {
     row-gap: 20px;
     padding-bottom: 20px;
   }
+}
+.product__image {
+  border-radius: var(--border-radius-large);
 }
 @media (max-width: 1280px) {
   .product__image {

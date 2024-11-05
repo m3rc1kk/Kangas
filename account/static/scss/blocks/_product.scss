@@ -21,6 +21,9 @@
   }
 
   &__image {
+
+    border-radius: var(--border-radius-large);
+
     @include desktop {
       width: 500px;
       height: auto;

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'social_django',
     'django_extensions',
+    'main',
 ]
 
 MIDDLEWARE = [
@@ -141,6 +142,7 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'social_core.backends.google.GoogleOAuth2',
+    'account.authentication.EmailAuthBackend',
 ]
 
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('AUTH_KEY')
