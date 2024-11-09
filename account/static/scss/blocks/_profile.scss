@@ -133,13 +133,37 @@
     }
   }
 
-  &__logout {
-    margin-bottom: 20px;
+  &-user__buttons {
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    @include mobile {
+      flex-direction: column;
+    }
+  }
 
+  &__logout {
+    border: 0;
+    margin-bottom: 20px;
+    
     @include tablet {
       font-size: 20px;
       padding: 20px 60px;
     }
   }
 
+  &__change {
+    padding: 20px 60px;
+    @include tablet {
+      font-size: 20px;
+      padding: 20px 60px;
+    }
+
+    @include mobile {
+      flex-direction: column;
+      margin-bottom: 10px;
+    }
+  }
+
 }
+

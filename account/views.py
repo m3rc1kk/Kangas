@@ -1,8 +1,11 @@
 from django.http import HttpResponse
-
 from django.shortcuts import render, redirect
 from .forms import UserForm, UserEditForm
 from django.contrib.auth import authenticate, login
+from django.views.generic import DetailView
+
+from .models import User
+
 
 def register(request):
     if request.method == 'POST':
@@ -36,3 +39,8 @@ def user_edit(request):
         form = UserEditForm(instance=request.user)
 
     return render(request, 'account/user_edit.html', {"form": form})
+
+class DetailProfileView(DetailView):
+    model = User
+    context_object_name = 'user'
+    template_name = 'account/profile.html'

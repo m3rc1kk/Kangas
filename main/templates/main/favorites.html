@@ -2,7 +2,8 @@
 {% load static %}
 {% block content %}
 <body>
-    <header class="header">
+
+<header class="header">
         <div class="header__inner container">
             <div class="header__left">
                 <a href="{% url 'main:product-list' %}" class="header__logo logo">
@@ -36,35 +37,40 @@
             </div>
     </header>
 
-    <main class="content">
-        <section class="section">
-            <div class="product">
-                <div class="product__inner container">
-                    <img src="{{ product.image.url }}" width="650" height="650" loading="lazy" alt="" class="product__image">
-                    <div class="product__body">
-                        <h2 class="product__title">{{ product.name }}</h2>
-
-                        <span class="product__price price">{{ product.price }}₽</span>
-                        <ul class="product__sizes">
-                            <li class="product__size product__size--active">S</li>
-                            <li class="product__size">M</li>
-                            <li class="product__size">L</li>
-                            <li class="product__size">XL</li>
-                            <li class="product__size">XXL</li>
-                        </ul>
-
-                        <div class="product__buttons">
-                            <a href="#" class="product__button-cart button">В корзину</a>
-                            <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post">
+<main class="content">
+    <section class="section">
+        <div class="cart">
+            <div class="cart__inner container">
+                <header class="cart__header">
+                    <h2 class="cart__title">Избранное</h2>
+                </header>
+                <ul class="order__info cart__info">
+                    {% for product in request.user.favorites.all %}
+                    <li class="order__info-item cart__info-item">
+                        <a href="{{ product.get_absolute_url }}" class="order__info-link cart__info-link">
+                            <div class="order__info-body">
+                                <img src="{{ product.image.url }}" width="126" height="118" loading="lazy" alt="" class="order__info-image">
+                                <h3 class="order__info-title">{{ product.name }}</h3>
+                            </div>
+                            <div class="order__info-right">
+                                <span class="order__info-price">{{ product.price }}</span>
+                                <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post">
                                 {% csrf_token %}
-                                <button class="product__button-favorites" type="submit"><img src="{% static 'images/product/heart.svg' %}" width="36" height="36" alt=""
-                                                                               class="product__button-favorites-image"></button>
+                                <button class="order__info-delete favorites__like" type="submit"><img src="{% static 'images/cart/heart.svg' %}" width="48" height="48" loading="lazy" alt="" class="order__info-delete-icon"></button>
                             </form>
-                        </div>
-                    </div>
-                </div>
+
+                            </div>
+                        </a>
+                    </li>
+                    {% endfor %}
+
+
+
+                </ul>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
+
 </body>
 {% endblock %}
