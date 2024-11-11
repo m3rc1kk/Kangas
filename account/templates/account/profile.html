@@ -19,14 +19,14 @@
 
                 <div class="header__right">
                     <div class="header__icons">
-                        <a href="#" class="header__favorites-link">
+                        <a href="{% url 'main:favorites' %}" class="header__favorites-link">
                             <img class="header__favorites header__icon" loading="lazy" src="{% static 'images/main/heart.svg' %}" width="38" height="38" alt="">
                         </a>
                         <a href="#" class="header__cart-link">
                             <img class="header__cart header__icon" loading="lazy" src="{% static 'images/main/shopping-bag.svg' %}" width="38" height="38" alt="">
                         </a>
                     </div>
-                    <a class="header__profile" href="#">
+                    <a class="header__profile" href="{{ request.user.get_absolute_url }}">
                         {% if request.user.avatar %}
                             <img src="{{ request.user.avatar.url }}" width="44" height="44" loading="lazy" alt="" class="header__profile-photo">
                         {% else %}

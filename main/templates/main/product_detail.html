@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load widget_tweaks %}
 {% block content %}
 <body>
     <header class="header">
@@ -16,7 +17,7 @@
 
                 <div class="header__right">
                     <div class="header__icons">
-                        <a href="#" class="header__favorites-link">
+                        <a href="{% url 'main:favorites' %}" class="header__favorites-link">
                             <img class="header__favorites header__icon" loading="lazy" src="{% static 'images/main/heart.svg' %}" width="38" height="38" alt="">
                         </a>
                         <a href="#" class="header__cart-link">
@@ -54,11 +55,22 @@
                         </ul>
 
                         <div class="product__buttons">
-                            <a href="#" class="product__button-cart button">В корзину</a>
+                            <form action="{% url 'cart:cart_add' product.id product.slug %}" method="post" class="cart__form">
+                                <button class="product__button-cart button">В корзину</button>
+                                {% render_field cart_product_form.quantity class+="cart__input" %}
+                                {% render_field cart_product_form.override %}
+
+                                {% csrf_token %}
+                            </form>
                             <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post">
                                 {% csrf_token %}
+                                {% if product not in request.user.favorites.all %}
                                 <button class="product__button-favorites" type="submit"><img src="{% static 'images/product/heart.svg' %}" width="36" height="36" alt=""
                                                                                class="product__button-favorites-image"></button>
+                                {% else %}
+                                    <button class="product__button-favorites product__button-favorites--active" type="submit"><img src="{% static 'images/product/heart-active.svg' %}" width="36" height="36" alt=""
+                                                                               class="product__button-favorites-image"></button>
+                                {% endif %}
                             </form>
                         </div>
                     </div>

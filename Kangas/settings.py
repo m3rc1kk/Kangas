@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'social_django',
     'django_extensions',
     'main',
+    'cart.apps.CartConfig',
 ]
 
 MIDDLEWARE = [
@@ -149,3 +150,5 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = config('AUTH_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('AUTH_SECRET')
 
 LOGIN_REDIRECT_URL = 'main:product-list'
+
+CART_SESSION_ID = 'cart'

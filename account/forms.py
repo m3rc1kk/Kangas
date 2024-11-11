@@ -12,6 +12,7 @@ class UserForm(forms.ModelForm):
         fields = ('username', 'email', 'first_name', 'last_name' ,'password', 'password2', 'city', 'avatar')
 
 class UserEditForm(forms.ModelForm):
+    avatar = forms.ImageField(widget=FileInput)
     class Meta:
         model = User
         fields = ('username', 'email', 'first_name','city', 'avatar')

@@ -1,8 +1,9 @@
-{% extends "base.html" %}
+{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 <body>
-    <header class="header">
+
+<header class="header">
         <div class="header__inner container">
             <div class="header__left">
                 <a href="{% url 'main:product-list' %}" class="header__logo logo">
@@ -35,33 +36,41 @@
                 </div>
             </div>
     </header>
+<main class="content">
+    <section class="section">
+        <div class="cart">
+            <div class="cart__inner container">
+                <header class="cart__header">
+                    <h2 class="cart__title">Корзина</h2>
+                    <span class="cart__totalprice">{{ cart.get_total_price }}₽</span>
+                    <a href="#" class="button cart__button">Заказать</a>
+                </header>
+                <ul class="order__info cart__info">
+                    {% for item in cart %}
+                    {% with product=item.product %}
+                        <li class="order__info-item cart__info-item">
+                            <a href="#" class="order__info-link cart__info-link">
+                                <div class="order__info-body">
+                                    <img src="{{ product.image.url }}" width="126" height="118" loading="lazy" alt="" class="order__info-image">
+                                    <h3 class="order__info-title">{{ product.name }}</h3>
+                                </div>
+                                <div class="order__info-right">
+                                    <span class="order__info-price">{{ product.price }}₽</span>
+                                    <form action="{% url 'cart:cart_remove' product.id product.slug %}" method="post">
+                                        {% csrf_token %}
+                                        <button class="order__info-delete" type="submit"><img src="{% static 'images/cart/trash.svg' %}" width="48" height="48" loading="lazy" alt="" class="order__info-delete-icon"></button>
+                                    </form>
+                                </div>
 
-    <main class="content">
-        <section class="section">
-            <div class="home">
-                <div class="home__inner container">
-                    <h2 class="home__title">Главная</h2>
-                    <div class="home__products">
-                        <ul class="home__products-list">
-                            {% for product in products %}
-                                <li class="home__product">
-                                    <a href="{{ product.get_absolute_url }}" class="home__product-link">
-                                        <div class="home__product-image-wrapper">
-                                            <img src="{{ product.image.url }}" alt="" width="347" height="324" loading="lazy" class="home__product-image">
-                                        </div>
-                                        <div class="home__product-body">
-                                            <h4 class="home__product-title">{{ product.name }}</h4>
-                                            <span class="home__product-price price">₽{{ product.price }}</span>
-                                        </div>
-                                    </a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                </div>
+                            </a>
+                        </li>
+                    {% endwith %}
+                    {% endfor %}
+
+                </ul>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+</main>
 </body>
-
 {% endblock %}
