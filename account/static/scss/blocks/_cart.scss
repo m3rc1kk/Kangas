@@ -2,8 +2,20 @@
 
   &__form {
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
     column-gap: 10px;
+
+    @include mobile {
+      align-items: center;
+    }
+
+    &-buttons {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+    }
   }
 
   &__input {
@@ -72,4 +84,6 @@
   &__button {
     font-size: 20px;
   }
+
+  
 }

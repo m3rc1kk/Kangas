@@ -1,6 +1,7 @@
 .product {
   padding-top: 100px;
 
+
   @include mobile {
     padding-top: 50px;
   }
@@ -121,9 +122,12 @@
     text-align: center;
     border-radius: var(--border-radius-large);
     transition-duration: .2s;
+    border: 0;
+  
+
 
     @include hover {
-      background-color: var(--color-dark);
+      background-color: var(--color-accent);
       color: var(--color-light);
     }
 
@@ -148,10 +152,31 @@
     }
   }
 
+  &__favorites-form {
+    position: absolute;
+    bottom: 0;
+    left: 350px;
+
+    @include desktop {
+      left: 290px;
+    }
+
+    @include tablet {
+      left: 235px;
+    }
+
+    @include mobile {
+      left: 0;
+    }
+  }
+
   &__buttons {
     display: flex;
+    flex-direction: column;
     align-items: center;
     column-gap: 36px;
+    position: relative;
+
 
     @include tablet {
       column-gap: 20px;
@@ -210,3 +235,4 @@
     }
   }
 }
+

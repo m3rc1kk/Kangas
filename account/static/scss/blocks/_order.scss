@@ -1,4 +1,21 @@
 .order {
+
+  &__price {
+    font-size: 20px;
+
+    @include mobile {
+      font-size: 16px;
+    }
+  }
+
+  &__title {
+    padding-block: 20px;
+  }
+
+  &__icon {
+    margin-bottom: 10px;
+  }
+
   &__info {
     @include flex-column;
 

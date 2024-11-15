@@ -9,8 +9,8 @@ class Cart:
     def __init__(self, user):
         self.user = user
 
-    def add(self, product, quantity=1, override_quantity=False):
-        cart_item = CartModel.objects.filter(user=self.user, product=product).first()
+    def add(self, product, quantity=1, override_quantity=False, size = None):
+        cart_item = CartModel.objects.filter(user=self.user, product=product, size = size).first()
 
         if cart_item:
             if override_quantity:
@@ -19,10 +19,10 @@ class Cart:
                 cart_item.quantity += quantity
             cart_item.save()
         else:
-            CartModel.objects.create(user= self.user, product=product, quantity=quantity)
+            CartModel.objects.create(user= self.user, product=product, quantity=quantity, size = size)
 
-    def remove(self, product):
-        CartModel.objects.filter(user=self.user, product=product).delete()
+    def remove(self, product, size):
+        CartModel.objects.filter(user=self.user, product=product, size = size).delete()
 
     def __iter__(self):
         cart_items = CartModel.objects.filter(user=self.user).select_related('product')
@@ -32,6 +32,7 @@ class Cart:
                 'quantity': item.quantity,
                 'price': item.product.price,
                 'total_price': item.get_total_price(),
+                'size': item.size,
             }
 
     def __len__(self):

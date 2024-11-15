@@ -19,7 +19,7 @@
                         <a href="{% url 'main:favorites' %}" class="header__favorites-link">
                             <img class="header__favorites header__icon" loading="lazy" src="{% static 'images/main/heart.svg' %}" width="38" height="38" alt="">
                         </a>
-                        <a href="#" class="header__cart-link">
+                        <a href="{% url 'cart:cart_detail' %}" class="header__cart-link">
                             <img class="header__cart header__icon" loading="lazy" src="{% static 'images/main/shopping-bag.svg' %}" width="38" height="38" alt="">
                         </a>
                     </div>
@@ -51,7 +51,7 @@
                                         </div>
                                         <div class="home__product-body">
                                             <h4 class="home__product-title">{{ product.name }}</h4>
-                                            <span class="home__product-price price">₽{{ product.price }}</span>
+                                            <span class="home__product-price price">{{ product.price|floatformat:0 }}₽</span>
                                         </div>
                                     </a>
                                 </li>

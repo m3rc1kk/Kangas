@@ -9,3 +9,9 @@ class CartAddProductForm(forms.Form):
     override = forms.BooleanField(required=False,
      initial=False,
      widget=forms.HiddenInput)
+    size = forms.ChoiceField(
+        choices=[('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'), ('XXL', 'XXL')],
+        required=True,
+        widget=forms.RadioSelect
+    )
+

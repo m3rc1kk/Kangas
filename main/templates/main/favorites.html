@@ -20,7 +20,7 @@
                         <a href="{% url 'main:favorites' %}" class="header__favorites-link">
                             <img class="header__favorites header__icon" loading="lazy" src="{% static 'images/main/heart.svg' %}" width="38" height="38" alt="">
                         </a>
-                        <a href="#" class="header__cart-link">
+                        <a href="{% url 'cart:cart_detail' %}" class="header__cart-link">
                             <img class="header__cart header__icon" loading="lazy" src="{% static 'images/main/shopping-bag.svg' %}" width="38" height="38" alt="">
                         </a>
                     </div>
@@ -53,7 +53,7 @@
                                 <h3 class="order__info-title">{{ product.name }}</h3>
                             </div>
                             <div class="order__info-right">
-                                <span class="order__info-price">{{ product.price }}</span>
+                                <span class="order__info-price">{{ product.price|floatformat:0 }}</span>
                                 <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post">
                                 {% csrf_token %}
                                 <button class="order__info-delete favorites__like" type="submit"><img src="{% static 'images/cart/heart.svg' %}" width="48" height="48" loading="lazy" alt="" class="order__info-delete-icon"></button>

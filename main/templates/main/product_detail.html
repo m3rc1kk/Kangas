@@ -20,7 +20,7 @@
                         <a href="{% url 'main:favorites' %}" class="header__favorites-link">
                             <img class="header__favorites header__icon" loading="lazy" src="{% static 'images/main/heart.svg' %}" width="38" height="38" alt="">
                         </a>
-                        <a href="#" class="header__cart-link">
+                        <a href="{% url 'cart:cart_detail' %}" class="header__cart-link">
                             <img class="header__cart header__icon" loading="lazy" src="{% static 'images/main/shopping-bag.svg' %}" width="38" height="38" alt="">
                         </a>
                     </div>
@@ -45,24 +45,27 @@
                     <div class="product__body">
                         <h2 class="product__title">{{ product.name }}</h2>
 
-                        <span class="product__price price">{{ product.price }}₽</span>
-                        <ul class="product__sizes">
-                            <li class="product__size product__size--active">S</li>
-                            <li class="product__size">M</li>
-                            <li class="product__size">L</li>
-                            <li class="product__size">XL</li>
-                            <li class="product__size">XXL</li>
-                        </ul>
+                        <span class="product__price price">{{ product.price|floatformat:0 }}₽</span>
 
                         <div class="product__buttons">
                             <form action="{% url 'cart:cart_add' product.id product.slug %}" method="post" class="cart__form">
-                                <button class="product__button-cart button">В корзину</button>
-                                {% render_field cart_product_form.quantity class+="cart__input" %}
-                                {% render_field cart_product_form.override %}
+                                <ul class="product__sizes">
+                                    {% for size in cart_product_form.size %}
+                                        <label class="product__size" {% if checked %}class="product__size--active"{% endif %}>
 
+                                            {{ size.tag }} {{ size.choice_label }}
+                                        </label>
+                                    {% endfor %}
+                                </ul>
+                                <div class="cart__form-buttons">
+                                    <button class="product__button-cart button">В корзину</button>
+
+                                    {% render_field cart_product_form.quantity class+="cart__input" %}
+                                    {% render_field cart_product_form.override %}
+                                </div>
                                 {% csrf_token %}
                             </form>
-                            <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post">
+                            <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post" class="product__favorites-form">
                                 {% csrf_token %}
                                 {% if product not in request.user.favorites.all %}
                                 <button class="product__button-favorites" type="submit"><img src="{% static 'images/product/heart.svg' %}" width="36" height="36" alt=""
