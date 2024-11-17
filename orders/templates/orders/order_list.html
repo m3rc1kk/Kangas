@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <header class="header">
+        <div class="header__inner container">
+            <div class="header__left">
+                <a href="{% url 'main:product-list' %}" class="header__logo logo">
+                    <img src="{% static 'images/logo.svg' %}" loading="lazy" alt="" width="66" height="66" class="logo__image">
+                </a>
+                <div class="header__search">
+                    <img src="{% static 'images/main/search.svg' %}" loading="lazy" width="24" height="24" alt="" class="header__search-icon">
+                    <input type="search" placeholder="Поиск" class="header__search-input">
+                </div>
+            </div>
+
+                <div class="header__right">
+                    <div class="header__icons">
+                        <a href="{% url 'main:favorites' %}" class="header__favorites-link">
+                            <img class="header__favorites header__icon" loading="lazy" src="{% static 'images/main/heart.svg' %}" width="38" height="38" alt="">
+                        </a>
+                        <a href="{% url 'cart:cart_detail' %}" class="header__cart-link">
+                            <img class="header__cart header__icon" loading="lazy" src="{% static 'images/main/shopping-bag.svg' %}" width="38" height="38" alt="">
+                        </a>
+                    </div>
+                    <a class="header__profile" href="{{ request.user.get_absolute_url }}">
+                        {% if request.user.avatar %}
+                            <img src="{{ request.user.avatar.url }}" width="44" height="44" loading="lazy" alt="" class="header__profile-photo">
+                        {% else %}
+                            <img src="{% static 'images/logo.svg' %}" width="44" height="44" loading="lazy" alt="" class="header__profile-photo">
+                        {% endif %}
+
+                        <span class="header__profile-name">{{ request.user }}</span>
+                    </a>
+                </div>
+            </div>
+    </header>
+
+    <main class="content">
+    <section class="section">
+        <div class="profile">
+            <div class="profile__inner container">
+                <div class="profile__main">
+                    {% if user.avatar %}
+                        <img src="{{ request.user.avatar.url }}" width="100" height="100" loading="lazy" alt="" class="header__profile-photo">
+                    {% else %}
+                        <img src="{% static 'images/logo.svg' %}" width="100" height="100" loading="lazy" alt="" class="header__profile-photo">
+                    {% endif %}
+                    <span class="profile__name">{{ request.user }}</span>
+                </div>
+
+                <div class="profile__buttons">
+                    <a class="profile__button profile__button-order button profile__button--active" href="#">Заказы</a>
+                    <a class="profile__button profile__button-profile button" href="{% url 'profile' request.user.id %}">Профиль</a>
+                </div>
+
+                <ul class="order__info">
+                    {% for order in orders %}
+                        {% for item in order.items.all %}
+                        <li class="order__info-item">
+                            <a href="{% url 'main:product-detail' item.product.id item.product.slug %}" class="order__info-link">
+                                <div class="order__info-body">
+                                    <img src="{{ item.product.image.url }}" width="126" height="118" loading="lazy" alt="" class="order__info-image">
+                                    <h3 class="order__info-title">{{ item.product }}</h3>
+                                </div>
+                                <span class="order__info-status order__info-size">{{ item.size }}</span>
+                                {% if order.status %}
+                                    <span class="order__info-status order__info-status--active">Приехал</span>
+                                {% else %}
+                                    <span class="order__info-status">В пути</span>
+                                {% endif %}
+                            </a>
+                        </li>
+                        {% endfor %}
+                    {% endfor %}
+
+                </ul>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

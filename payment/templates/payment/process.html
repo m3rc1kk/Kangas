@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<body class="body__form">
+    <main class="content">
+        <section class="section">
+            <div class="login">
+                <img src="{% static 'images/order/ordercomplete.png' %}" alt="" width="1251" height="1080" loading="lazy" class="login__image form__image">
+                <div class="login__inner form__inner">
+                    <div class="login__body-wrapper form__body-wrapper">
+                        <div class="login__body form__body">
+                            <img src="{% static 'images/logo.svg' %}" width="60" height="60" loading="lazy" alt="" class="login__logo form__logo">
+
+                            <form action="{% url 'payment:process' %}" class="login__form form" method="post" autocomplete="off">
+                                <h2 class="login__title form__title order__form-title">Заказ</h2>
+                                {% csrf_token %}
+                                <ul class="order__list">
+                                {% for item in order.items.all %}
+                                    <li class="order__item">
+                                        <span class="order-name order__inf">{{ item.product.name }} |</span>
+                                        <span class="order-quantity order__inf">x{{ item.quantity }} |</span>
+                                        <span class="order-size order__inf">{{ item.size }} |</span>
+                                        <span class="order-price order__inf">{{ item.price|floatformat:0 }}₽</span>
+                                    </li>
+                                {% endfor %}
+                                </ul>
+                                <button class="login__button form__button button" type="submit">Продолжить</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+{% endblock %}

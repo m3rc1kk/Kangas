@@ -13,10 +13,10 @@
 
     &-label {
       display: inline-block;
-      font-weight: 800;
+      font-family: var(--font-family-base);
+      font-weight: 500;
       color: var(--color-dark);
-      font-weight: 400;
-      font-size: 28px;
+      font-size: 24px;
       padding-block: 4px;
       transition-duration: var(--transition-duration);
 

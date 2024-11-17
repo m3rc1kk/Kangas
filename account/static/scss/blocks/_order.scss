@@ -1,5 +1,25 @@
 .order {
 
+  &__inf {
+    font-size: 20px;
+
+    @include mobile {
+      font-size: 14px;
+    }
+  }
+
+  &__form-title {
+    padding-block: 15px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 5px;
+    padding-bottom: 10px;
+  }
+
   &__price {
     font-size: 20px;
 
@@ -141,6 +161,11 @@
       @include tablet {
         font-size: 20px;
       }
+    }
+
+    &-size {
+      opacity: 1;
+      color: var(--color-accent);
     }
 
     &-title {

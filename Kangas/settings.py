@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'main.apps.MainConfig',
     'cart.apps.CartConfig',
     'orders.apps.OrdersConfig',
+    'payment.apps.PaymentConfig',
 ]
 
 MIDDLEWARE = [
@@ -115,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 
@@ -153,3 +154,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = config('AUTH_SECRET')
 LOGIN_REDIRECT_URL = 'main:product-list'
 
 CART_SESSION_ID = 'cart'
+
+STRIPE_PUBLISHABLE_KEY = config('STRIPE_KEY')
+STRIPE_SECRET_KEY = config('STRIPE_SECRET')
+STRIPE_API_VERSION = '2024-10-28.acacia'
+STRIPE_WEBHOOK_SECRET = config('STRIPE_WEBHOOK_SECRET')

@@ -23,6 +23,9 @@
                             {% render_field form.address class+="register__input form__input" placeholder="Адрес" autocomplete="new-password" %}
                             {% render_field form.postal_code class+="register__input form__input" placeholder="Почтовый индекс" autocomplete="new-password" %}
                             <span class="order__price">{{ cart.get_total_price|floatformat:0 }}₽</span>
+                            {% for error in form.errors.values %}
+                                <span class="error">{{ error }}</span>
+                            {% endfor %}
                             <button class="register__button form__button button" type="submit">Заказать</button>
                         </form>
 

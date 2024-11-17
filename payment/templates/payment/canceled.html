@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+<body class="body__form">
+<main class="content">
+    <section class="section">
+        <div class="order">
+            <img src="{% static 'images/order/ordercomplete.png' %}" alt="" width="1241" height="1080" loading="lazy" class="order__image form__image">
+            <div class="order__inner form__inner">
+                <div class="order__body-wrapper form__body-wrapper">
+                    <div class="order__body form__body">
+                        <img src="{% static 'images/logo.svg' %}" width="60" height="60" loading="lazy" alt="" class="order__logo form__logo">
+
+                        <p class="order__text form__text">Не удалось <br>
+                            оформить</p>
+                        <a href="{% url 'main:product-list' %}" class="order__button form__button button button--link">На Главную</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+</body>
+{% endblock %}

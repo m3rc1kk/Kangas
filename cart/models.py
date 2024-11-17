@@ -8,6 +8,11 @@ class CartModel(models.Model):
     quantity = models.PositiveIntegerField(default=1)
     size = models.CharField(max_length=3, null=True, blank=True)
 
+    class Meta:
+        db_table = 'cart'
+        verbose_name = 'Cart'
+        verbose_name_plural = 'Cart'
+
     def __str__(self):
         return f"{self.quantity} of {self.product.name} for {self.user}"
 

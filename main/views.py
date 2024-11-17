@@ -1,3 +1,5 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 
@@ -22,6 +24,7 @@ class DetailProductView(DetailView):
         context['cart_product_form'] = CartAddProductForm()
         return context
 
+@login_required
 def add_favorite_product(request, product_id, product_slug):
     if request.method == 'POST':
         product = get_object_or_404(Product, id=product_id)
@@ -34,7 +37,7 @@ def add_favorite_product(request, product_id, product_slug):
             return redirect('main:product-list')
     return redirect('main:product-detail', product_id, product_slug)
 
-class FavoriteProductView(ListView):
+class FavoriteProductView(LoginRequiredMixin,ListView):
     model = User
     context_object_name = 'user'
     template_name = 'main/favorites.html'

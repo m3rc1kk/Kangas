@@ -1,9 +1,17 @@
 .register {
 
+  &__title {
+    padding-bottom: 15px;
+  }
+
+  &__social {
+    padding: 20px 95px;
+  }
+
   &__logo {
     position: absolute;
-    right: 32px;
-    top: 32px;
+    right: 26px;
+    top: 26px;
 
     @include mobile {
       width: 40px;
@@ -15,7 +23,7 @@
 
   &__input {
     height: 80px;
-
+    margin-bottom: 10px;
     @include desktop {
       height: 60px;
       margin-bottom: 10px;

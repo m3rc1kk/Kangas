@@ -466,6 +466,17 @@ h4 {
   }
 }
 
+.error {
+  text-align: center;
+  max-width: 500px;
+}
+@media (max-width: 1024px) {
+  .error {
+    font-size: 12px;
+    max-width: 300px;
+  }
+}
+
 .welcome {
   display: flex;
   align-items: center;
@@ -1195,10 +1206,16 @@ h4 {
   }
 }
 
+.register__title {
+  padding-bottom: 15px;
+}
+.register__social {
+  padding: 20px 95px;
+}
 .register__logo {
   position: absolute;
-  right: 32px;
-  top: 32px;
+  right: 26px;
+  top: 26px;
 }
 @media (max-width: 768px) {
   .register__logo {
@@ -1210,6 +1227,7 @@ h4 {
 }
 .register__input {
   height: 80px;
+  margin-bottom: 10px;
 }
 @media (max-width: 1280px) {
   .register__input {
@@ -1404,6 +1422,24 @@ h4 {
   }
 }
 
+.order__inf {
+  font-size: 20px;
+}
+@media (max-width: 768px) {
+  .order__inf {
+    font-size: 14px;
+  }
+}
+.order__form-title {
+  padding-block: 15px;
+}
+.order__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
+  padding-bottom: 10px;
+}
 .order__price {
   font-size: 20px;
 }
@@ -1561,6 +1597,10 @@ h4 {
     font-size: 20px;
   }
 }
+.order__info-size {
+  opacity: 1;
+  color: var(--color-accent);
+}
 @media (max-width: 1280px) {
   .order__info-title {
     font-size: 26px;
@@ -1687,10 +1727,10 @@ h4 {
 }
 .file-label {
   display: inline-block;
-  font-weight: 800;
+  font-family: var(--font-family-base);
+  font-weight: 500;
   color: var(--color-dark);
-  font-weight: 400;
-  font-size: 28px;
+  font-size: 24px;
   padding-block: 4px;
   transition-duration: var(--transition-duration);
 }

@@ -53,7 +53,7 @@
                                 <h3 class="order__info-title">{{ product.name }}</h3>
                             </div>
                             <div class="order__info-right">
-                                <span class="order__info-price">{{ product.price|floatformat:0 }}</span>
+                                <span class="order__info-price">{{ product.price|floatformat:0 }}₽</span>
                                 <form action="{% url 'main:favorite-add' product.id product.slug %}" method="post">
                                 {% csrf_token %}
                                 <button class="order__info-delete favorites__like" type="submit"><img src="{% static 'images/cart/heart.svg' %}" width="48" height="48" loading="lazy" alt="" class="order__info-delete-icon"></button>

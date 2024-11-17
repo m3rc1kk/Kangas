@@ -17,6 +17,9 @@
                                 {% csrf_token %}
                                 {% render_field form.username class+="login__input form__input" placeholder='Логин' autocomplete="new-password" %}
                                 {% render_field form.password class+="login__input form__input" placeholder='Пароль' autocomplete="new-password" %}
+                                {% for error in form.errors.values %}
+                                    <span class="error">{{ error }}</span>
+                                {% endfor %}
                                 <button class="login__button form__button button" type="submit">Вход</button>
                             </form>
                             <a href="{% url 'register' %}" class="login__noacc">Нет аккаунта?</a>
