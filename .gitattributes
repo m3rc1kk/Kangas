@@ -1,3 +1,2 @@
-*.html linguist-vendored
-static/** linguist-vendored
-templates/** linguist-vendored
+*.py linguist-detectable
+manage.py linguist-detectable
