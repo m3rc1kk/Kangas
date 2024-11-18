@@ -1,6 +1,3 @@
 .env
 cert.crt
 cert.key
-*.html linguist-vendored
-static/** linguist-vendored
-templates/** linguist-vendored
